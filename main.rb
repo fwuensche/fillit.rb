@@ -7,10 +7,9 @@ require_relative "grid"
 init_time = Time.now
 filepath = ARGV[0]
 VERBOSE = ["-v", "--verbose"].include?(ARGV[1]) ? "ON" : "OFF"
-filetext = File.read(filepath)
-file_is_valid = validate(filetext)
 
-if file_is_valid
+filetext = File.read(filepath)
+if file_is_valid(filetext)
   pieces = read_pieces_from_file(filetext)
   solved_grid = fillit(pieces)
   print_grid(solved_grid)

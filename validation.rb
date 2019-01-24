@@ -1,4 +1,4 @@
-def validate(filetext)
+def file_is_valid(filetext)
   is_valid = has_at_least_one_piece(filetext) &&
     valid_number_of_lines(filetext) &&
     valid_chars(filetext) &&
@@ -13,7 +13,9 @@ def valid_chars(filetext)
   i = 1
   filetext.each_line do |line|
     if i % 5 == 0
-      return false if line != "\n"
+      if line != "\n"
+        return false
+      end
     else
       line.chars.each { |char| return false unless ["\n", "#", "."].include? char }
     end
